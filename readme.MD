@@ -3,12 +3,10 @@
 <p>I created the scheleton of the spider for Indeed, it's completely flexible and
 iters over the first <strong>FIVE PAGES</strong> (if there are)</p>
 
-<h6>Things to be completed</h6>
-<ul>
+<strong>Things to be completed</strong>
 <li>Decide how to display the results <em>(Console, csv file, etc..)</em></li>
 <li>Create spider and selenium version</li>
 <li>Decide how to run the script <em>(Run from console, create simple user interface, etc..)</em></li>
-</ul>
 
 <strong>Project description in the description.pdf file consisting of:</strong>
 <li>Names and ID’s of all participants.</li>
