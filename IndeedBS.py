@@ -44,6 +44,12 @@ request = requests.get(url)
 response = soup(request.text, 'html.parser')
 pages_count = response.find(id='searchCountPages')
 pagination = response.select("ul[class='pagination-list'] > li")[:-1]
+
+if "-city" in user_input:
+	city = [user_input[user_input.index("-city") + 1]]
+else:
+	city = response.select("span[class^='location'],div[class^='location']")
+
 #PAGINATION IS ['&start=10,20,30,40...']
 if pages_count is None:
 	raise Exception("No result found for your job search. Please change your criteria.")
@@ -53,7 +59,7 @@ else:
 		    url = 'https://pl.indeed.com{}'
 		    return '=HYPERLINK("%s", "%s")' % (url.format(value), 'CLICK HERE')
 
-	df = pd.DataFrame(columns=["Job Title","Company","Description","Published on", "Link"])
+	df = pd.DataFrame(columns=["Job Title","Company","Description","Published on", "City", "Link"])
 	for page in ['00'] + ['10', '20', '30', '40'][:len(pagination)]:
 		current_page = '&start=' + page
 		url += current_page
@@ -64,7 +70,8 @@ else:
 		company = response.select("span[class='company']")
 		description = response.select("div[class='summary']")
 		published_on = response.select("span[class='date date-a11y']")
-		for el in zip(jobtitle, company, description, published_on):
+		city = city*len(jobtitle) if len(city) == 1 else city
+		for el in zip(jobtitle, company, description, published_on, city):
 			df.loc[len(df)] = list(map(lambda x: x.text.replace('\n', ''), el)) + [next(links)]
 
 		request.close()
@@ -72,3 +79,5 @@ else:
 
 	if len(df) > 0:
 		df.to_csv(output_csv, index=False) if output_csv.endswith(".csv") else df.to_excel(output_csv, index=False)
+	else:
+		print("No results Found!")
