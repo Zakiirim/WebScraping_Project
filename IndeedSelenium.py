@@ -1,6 +1,5 @@
 from selenium import webdriver as wd
 from selenium.webdriver.chrome.options import Options
-import time
 import sys
 import pandas as pd
 
