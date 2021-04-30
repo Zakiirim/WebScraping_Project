@@ -1,23 +1,29 @@
-<h5>Hello Ewelina</h5>
+<h2>Beautiful Soup Version</h2>
+<p>You can run the script from the command by using</p>
+<center><h3>python IndeedBS.py [optional criteria] -O [output]</h3></center>
 <br>
-<p>I created the scheleton of the spider for Indeed, it's completely flexible and
-iters over the first <strong>FIVE PAGES</strong> (if there are)</p>
-<br>
-<strong>Things to be completed</strong>
+<p>Possible Kwargs:</p>
 <ul>
-<li>Decide how to display the results <em>(Console, csv file, etc..)</em></li>
-<li>Create spider and selenium version</li>
-<li>Decide how to run the script <em>(Run from console, create simple user interface, etc..)</em></li>
-  </ul>
+  <li><strong>-job</strong> <em>job title</em></li>
+  <li><strong>-city</strong> <em>city name</em></li>
+  <li><strong>-contract</strong> <em>type of contract</em></li>
+  <li><strong>-maxold</strong> <em>how old the job posting</em></li>
+  <li><strong>-O</strong> <em>outputname.xlsx</em></li>
+</ul>
 <br>
-<strong>Project description in the description.pdf file consisting of:</strong>
+<center><img src="cmdexamples/IndeedBS.PNG"></img></center>
+<br>
+<h2>Selenium Version</h2>
+<p>You can run the script from the command by using</p>
+<center><h3>python IndeedSelenium.py [optional criteria] -O [output]</h3></center>
+<br>
+<p>Possible Kwargs:</p>
 <ul>
-<li>Names and ID’s of all participants.</li>
-<li>Short description of the topic and the web page.</li>
-<li>If you omit Beautiful Soup scraper: justification, that the page is dynamic, and scraping can not be
-done with BS there.</li>
-<li>Short description of your scraper mechanics.</li>
-<li>Short technical description of the output you get.</li>
-<li>Extremely elementary data analysis - you need to prove, that collected data can be used for further analysis, but nothing more (hard limit of data analysis: one page).</li>
-<li>Detailed description which participant wrote which part of the project.</li>
-  </ul>
+  <li><strong>-job</strong> <em>job title</em></li>
+  <li><strong>-city</strong> <em>city name</em></li>
+  <li><strong>-contract</strong> <em>type of contract</em></li>
+  <li><strong>-maxold</strong> <em>how old the job posting</em></li>
+  <li><strong>-O</strong> <em>outputname.xlsx</em></li>
+  <li><strong>-h (or -headless)</strong> <em>to run the script headless</em></li>
+</ul>
+<center><img src="cmdexamples/IndeedSelenium.PNG"></img></center>
