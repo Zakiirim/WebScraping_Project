@@ -47,7 +47,7 @@ if any(map(lambda x: x in user_input, ['-h', '-headless'])):
 else:
 	options.headless = False
 browser = wd.Chrome("chromedriver.exe", options=options)
-request = browser.get(url)
+browser.get(url)
 try:
 	pages_count = browser.find_element_by_id('searchCountPages')
 except Exception:
