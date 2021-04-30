@@ -26,8 +26,7 @@ filters = {
 	'fromage=': ''
 }
 
-# user_input = sys.argv
-user_input = ["python", "-job", "Data Scientist", "-O", "risultatoselenium.xlsx", "-h"]
+user_input = sys.argv
 if len(user_input) < 2:
 	raise Exception("You must provide at least one argument!")
 else:
