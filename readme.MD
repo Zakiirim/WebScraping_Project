@@ -29,3 +29,15 @@
   <li><strong>-h (or -headless)</strong> <em>to run the script headless</em></li>
 </ul>
 <center><img src="cmdexamples/IndeedSelenium.PNG"></img></center>
+<h2>Scrapy Version</h2>
+<p>You can run the script from the command by using</p>
+<center><h3>scrapy crawl job_offers [optional criteria] -o [output]</h3></center>
+<br>
+<p>Possible Kwargs:</p>
+<ul>
+  <li><strong>-job</strong> <em>job title</em></li>
+  <li><strong>-city</strong> <em>city name</em></li>
+  <li><strong>-contract</strong> <em>type of contract</em></li>
+  <li><strong>-maxold</strong> <em>how old the job posting</em></li>
+  <li><strong>-o</strong> <em>outputname.csv</em></li>
+</ul>
