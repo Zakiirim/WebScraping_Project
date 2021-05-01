@@ -41,3 +41,13 @@
   <li><strong>-maxold</strong> <em>how old the job posting</em></li>
   <li><strong>-o</strong> <em>outputname.csv</em></li>
 </ul>
+<center><img src="cmdexamples/IndeedScrapy.png"></img></center>
+<h2>Example Filters:</h2>
+<br>
+<ul>
+  <li><strong>-job</strong> <em>'Data Scientist'</em></li>
+  <li><strong>-city</strong> <em>'Warsaw'</em></li>
+  <li><strong>-contract</strong> <em>'fulltime', 'permanent', 'subcontract', 'internship', 'parttime'</em></li>
+  <li><strong>-maxold</strong> <em>'1', '3', '7', '14' (24 hours, 3 days, 7 days, 14 days)</em></li>
+  <li><strong>-o</strong> <em>'job_offers.csv'</em></li>
+</ul>
