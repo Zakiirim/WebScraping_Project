@@ -4,7 +4,7 @@
 <br>
 <p>Possible Kwargs:</p>
 <ul>
-  <li><strong>-job</strong> <em>job title or comapny name</em></li>
+  <li><strong>-job</strong> <em>job title or company name</em></li>
   <li><strong>-city</strong> <em>city name</em></li>
   <li><strong>-contract</strong> <em>type of contract</em></li>
   <li><strong>-max</strong> <em>how many job pages to scrape (integer)</em></li>
@@ -20,7 +20,7 @@
 <br>
 <p>Possible Kwargs:</p>
 <ul>
-  <li><strong>-job</strong> <em>job title or comapny name</em></li>
+  <li><strong>-job</strong> <em>job title or company name</em></li>
   <li><strong>-city</strong> <em>city name</em></li>
   <li><strong>-contract</strong> <em>type of contract</em></li>
   <li><strong>-max</strong> <em>how many job pages to scrape (integer)</em></li>
@@ -35,7 +35,7 @@
 <br>
 <p>Possible Kwargs:</p>
 <ul>
-  <li><strong>-job</strong> <em>job title or comapny name</em></li>
+  <li><strong>-job</strong> <em>job title or company name</em></li>
   <li><strong>-city</strong> <em>city name</em></li>
   <li><strong>-contract</strong> <em>type of contract</em></li>
   <li><strong>-maxold</strong> <em>how old the job posting</em></li>
