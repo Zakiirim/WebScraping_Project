@@ -2,6 +2,7 @@ from selenium import webdriver as wd
 from selenium.webdriver.chrome.options import Options
 import sys
 import pandas as pd
+import time
 
 """
 FILTERS:
@@ -71,19 +72,27 @@ else:
 
 	df = pd.DataFrame(columns=["Job Title", "Company", "Description", "Published on", "City", "Link"])
 	c_page = 1
-	page = iter(str(x) for x in range(10, 1000, 10))
+	page = iter(str(x) for x in range(10, 100000, 10))
+
+	if '-max' in user_input:
+		max_user = int(user_input[user_input.index('-max') + 1])
+	else:
+		max_user = 100000
 	if not any(pagination):
 		max_page = 2
 	else:
 		max_page = int(browser.find_elements_by_css_selector("ul[class='pagination-list'] > li")[-2].text)
-	while c_page < max_page:
-		current_page = '&start=' + next(page)
-		url += current_page
-		browser.get(url)
-		try:
-			browser.find_element_by_id("popover-x").click()
-		except Exception:
-			pass
+
+	ad_clicked = False
+	print(url)
+	while c_page < max_page and c_page <= max_user:
+		if not ad_clicked:
+			try:
+				time.sleep(1)
+				browser.find_element_by_id("popover-x").click()
+				ad_clicked = True
+			except Exception:
+				pass
 		c_page += 1
 		jobtitle = browser.find_elements_by_css_selector("a[data-tn-element='jobTitle']")
 		links = list(map(lambda x: make_hyperlink(x.get_attribute('href')), jobtitle))
@@ -96,7 +105,9 @@ else:
 		for el in zip(jobtitle, company, description, published_on, city, links):
 			df.loc[len(df)] = list(el)
 
-		url = url[:len(url)-len(current_page)]
+		max_page = int(browser.find_elements_by_css_selector("ul[class='pagination-list'] > li")[-2].text)
+		current_page = '&start=' + next(page)
+		browser.get(url + current_page)
 
 	if len(df) > 0:
 		df.to_csv(output_csv, index=False) if output_csv.endswith(".csv") else df.to_excel(output_csv, index=False)

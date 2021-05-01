@@ -43,25 +43,36 @@ if not output_csv:
 request = requests.get(url)
 response = soup(request.text, 'html.parser')
 pages_count = response.find(id='searchCountPages')
-pagination = response.select("ul[class='pagination-list'] > li")[:-1]
 
 if "-city" in user_input:
 	city = [user_input[user_input.index("-city") + 1]]
 else:
 	city = response.select("span[class^='location'],div[class^='location']")
 
-#PAGINATION IS ['&start=10,20,30,40...']
+# PAGINATION IS ['&start=10,20,30,40...']
 if pages_count is None:
 	raise Exception("No result found for your job search. Please change your criteria.")
 else:
+
 	def make_hyperlink(value):
 		if len(value) < 256:
-		    url = 'https://pl.indeed.com{}'
-		    return '=HYPERLINK("%s", "%s")' % (url.format(value), 'CLICK HERE')
+			base_url = 'https://pl.indeed.com{}'
+			return '=HYPERLINK("%s", "%s")' % (base_url.format(value), 'CLICK HERE')
 
-	df = pd.DataFrame(columns=["Job Title","Company","Description","Published on", "City", "Link"])
-	for page in ['00'] + ['10', '20', '30', '40'][:len(pagination)]:
-		current_page = '&start=' + page
+	pages_count = int(pages_count.text.split(" - ")[-1].split()[0])
+	df = pd.DataFrame(columns=["Job Title", "Company", "Description", "Published on", "City", "Link"])
+	c_page = 1
+
+	if '-max' in user_input:
+		max_page = int(user_input[user_input.index('-max') + 1])
+		max_page = max_page if max_page <= pages_count else pages_count
+	else:
+		max_page = pages_count
+	page = iter(str(x) if len(str(x)) > 1 else "0" + str(x) for x in range(0, 100000, 10))
+	request.close()
+
+	while c_page <= max_page:
+		current_page = '&start=' + next(page)
 		url += current_page
 		request = requests.get(url)
 		response = soup(request.text, 'html.parser')
@@ -76,6 +87,7 @@ else:
 
 		request.close()
 		url = url[:len(url)-len(current_page)]
+		c_page += 1
 
 	if len(df) > 0:
 		df.to_csv(output_csv, index=False) if output_csv.endswith(".csv") else df.to_excel(output_csv, index=False)
