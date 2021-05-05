@@ -66,7 +66,7 @@ else:
 
 # PAGINATION IS ['&start=10,20,30,40...']
 if pages_count is None:
-	raise Exception("No result found for your job search. Please change your criteria.")
+	print("No result found for your job search. Please change your criteria.")
 else:
 	def make_hyperlink(value):
 		if len(value) < 256:
