@@ -12,6 +12,8 @@ jt 				TYPE OF CONTRACT
 fromage 		HOW OLD THE JOB POSTING
 """
 
+limit_pages = True
+
 user_keys = {
 	'-job': 'q=',
 	'-city': 'l=',
@@ -77,7 +79,7 @@ else:
 	if '-max' in user_input:
 		max_user = int(user_input[user_input.index('-max') + 1])
 	else:
-		max_user = 100000
+		max_user = 100000 if not limit_pages else 100
 	if not any(pagination):
 		max_page = 2
 	else:

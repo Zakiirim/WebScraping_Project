@@ -4,11 +4,15 @@ import sys
 import pandas as pd
 
 
-#FILTERS
-#q 				JOB TITLE
-#l 				CITY
-#jt 			TYPE OF CONTRACT
-#fromage 		HOW OLD THE JOB POSTING
+limit_search = True
+
+'''
+FILTERS
+q 				JOB TITLE
+l 				CITY
+jt 				TYPE OF CONTRACT
+fromage 		HOW OLD THE JOB POSTING
+'''
 
 user_keys = {
 	'-job': 'q=',
@@ -67,7 +71,7 @@ else:
 		max_page = int(user_input[user_input.index('-max') + 1])
 		max_page = max_page if max_page <= pages_count else pages_count
 	else:
-		max_page = pages_count
+		max_page = pages_count if not limit_search else 100
 	page = iter(str(x) if len(str(x)) > 1 else "0" + str(x) for x in range(0, 100000, 10))
 	request.close()
 
@@ -83,7 +87,7 @@ else:
 		published_on = response.select("span[class='date date-a11y']")
 		city = city*len(jobtitle) if len(city) == 1 else city
 		for el in zip(jobtitle, company, description, published_on, city):
-			df.loc[len(df)] = list(map(lambda x: x.text.replace('\n', ''), el)) + [next(links)]
+			df.loc[len(df)] = list(map(lambda x: x.text.replace('\n', '') if not isinstance(x, str) else x, el)) + [next(links)]
 
 		request.close()
 		url = url[:len(url)-len(current_page)]
