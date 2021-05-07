@@ -11,12 +11,12 @@
   <li><strong>-O</strong> <em>outputname.xlsx</em></li>
 </ul>
 <br>
-<center><img src="cmdexamples/IndeedBS.PNG"></img></center>
+<center><img src="cmdexamples/IndeedBS.png"></img></center>
 <br>
 <h2>Selenium Version</h2>
 <p>You can run the script from the command by using</p>
 <center><h3>python IndeedSelenium.py [optional criteria] -O [output]</h3></center>
-<br>
+<br>Cancel changes
 <p>Possible Kwargs:</p>
 <ul>
   <li><strong>-job</strong> <em>job title or company name</em></li>
@@ -26,7 +26,7 @@
   <li><strong>-O</strong> <em>outputname.xlsx</em></li>
   <li><strong>-h (or -headless)</strong> <em>to run the script headless</em></li>
 </ul>
-<center><img src="cmdexamples/IndeedSelenium.PNG"></img></center>
+<center><img src="cmdexamples/IndeedSelenium.png"></img></center>
 <h2>Scrapy Version</h2>
 <p>You can run the script from the command by using</p>
 <center><h3>scrapy crawl job_offers [optional criteria] -o [output]</h3></center>
