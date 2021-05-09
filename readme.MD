@@ -8,6 +8,7 @@
   <li><strong>-city</strong> <em>city name</em></li>
   <li><strong>-contract</strong> <em>type of contract</em></li>
   <li><strong>-maxold</strong> <em>how old the job posting</em></li>
+    <li><strong>-max</strong> <em>how many pages to scrap (default value - min(maximum number of pages, 100))</em></li>
   <li><strong>-O</strong> <em>outputname.xlsx</em></li>
 </ul>
 <br>
@@ -23,6 +24,7 @@
   <li><strong>-city</strong> <em>city name</em></li>
   <li><strong>-contract</strong> <em>type of contract</em></li>
   <li><strong>-maxold</strong> <em>how old the job posting</em></li>
+  <li><strong>-max</strong> <em>how many pages to scrap (default value - min(maximum number of pages, 100))</em></li>
   <li><strong>-O</strong> <em>outputname.xlsx</em></li>
   <li><strong>-h (or -headless)</strong> <em>to run the script headless</em></li>
 </ul>
